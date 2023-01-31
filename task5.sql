@@ -1,14 +1,14 @@
 
 SELECT 
     *,
-    (count * 100 / prev_count - 100)::text || '%'                 
+    (count * 100 / prent_growth - 100)::text || '%'                 
 FROM (
     SELECT
         *,
-        lag(count) OVER (ORDER BY pub_month) as prev_count        
+        lag(count) OVER (ORDER BY dt) as prent_growth        
     FROM (
         SELECT
-            date_trunc('month', pub_date)::date as pub_month,     
+            date_trunc('month', created_at)::date as dt,     
             COUNT(*)                                              
         FROM task5
         GROUP BY 1
