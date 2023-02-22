@@ -1,4 +1,3 @@
-
 SELECT 
     *,
     (count * 100 / prent_growth - 100)::text || '%'                 
